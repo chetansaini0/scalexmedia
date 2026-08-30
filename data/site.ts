@@ -1,0 +1,70 @@
+export const site = {
+  name: "ScalexMedia",
+  wordmark: "SC A L E X M E D I A",
+  shortName: "SX",
+  tagline: "We make brands impossible to scroll past.",
+  manifesto: [
+    "Create.",
+    "Capture.",
+    "Convert.",
+    "Scale.",
+  ],
+  description:
+    "ScalexMedia helps ambitious brands grow through social media strategy, content creation, creative campaigns and performance marketing.",
+  url: "https://scalexmedia.com",
+  email: "hello@scalexmedia.com",
+  phone: "",
+  location: "India",
+  year: 2026,
+  eyebrow: "Social Media  /  Creative  /  Growth",
+  heroHeadline: ["WE MAKE", "BRANDS", "IMPOSSIBLE", "TO SCROLL PAST."],
+  heroSupport:
+    "ScalexMedia builds the strategy, content and campaigns that turn attention into measurable growth.",
+  heroTrust: ["STRATEGY", "CONTENT", "PERFORMANCE", "GROWTH"],
+  finalCta: {
+    headline: ["READY TO", "GET NOTICED?"],
+    support: "Tell us where your brand is today. We'll show you where it could go.",
+  },
+  nav: [
+    { label: "Work", href: "/#work" },
+    { label: "Services", href: "/#services" },
+    { label: "Process", href: "/#process" },
+    { label: "Results", href: "/#results" },
+    { label: "About", href: "/#about" },
+    { label: "FAQ", href: "/#faq" },
+  ],
+  footerNav: [
+    { label: "Work", href: "/#work" },
+    { label: "Services", href: "/#services" },
+    { label: "Process", href: "/#process" },
+    { label: "Results", href: "/#results" },
+    { label: "About", href: "/#about" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Contact", href: "/#contact" },
+  ],
+  social: [
+    { label: "Instagram", href: "https://instagram.com/scalexmedia" },
+    { label: "LinkedIn", href: "https://linkedin.com/company/scalexmedia" },
+    { label: "YouTube", href: "https://youtube.com/@scalexmedia" },
+    { label: "Facebook", href: "https://facebook.com/scalexmedia" },
+  ],
+  legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
+  ],
+  seo: {
+    title: "ScalexMedia — Social Media Marketing & Growth Agency",
+    titleTemplate: "%s — ScalexMedia",
+    description:
+      "ScalexMedia helps ambitious brands grow through social media strategy, content creation, creative campaigns and performance marketing.",
+    keywords: [
+      "social media marketing agency",
+      "content creation",
+      "paid social advertising",
+      "brand growth",
+      "reels production",
+      "ScalexMedia",
+    ],
+    ogImage: "/og.jpg",
+  },
+} as const;
