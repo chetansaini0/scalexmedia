@@ -26,10 +26,10 @@ export function FAQ() {
                     type="button"
                     aria-expanded={expanded}
                     aria-controls={panelId}
-                    className="flex w-full items-start justify-between gap-6 py-6 text-left"
+                    className="flex min-h-16 w-full items-start justify-between gap-4 py-5 text-left md:gap-6 md:py-6"
                     onClick={() => setOpen(expanded ? -1 : index)}
                   >
-                    <span className="display text-[22px] md:text-[32px]">{faq.question}</span>
+                    <span className="display text-[20px] leading-tight md:text-[32px]">{faq.question}</span>
                     <span className="mt-1 text-accent" aria-hidden="true">
                       {expanded ? "–" : "+"}
                     </span>

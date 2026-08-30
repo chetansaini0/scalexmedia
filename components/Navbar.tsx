@@ -54,9 +54,10 @@ export function Navbar() {
             : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-[72px] max-w-[1680px] items-center justify-between px-5 md:px-8">
-        <a href="/#top" className="label !text-fg hover:!text-accent transition-colors">
-          {site.wordmark}
+      <div className="mx-auto flex h-16 max-w-[1680px] items-center justify-between gap-3 px-4 md:h-[72px] md:px-8">
+        <a href="/#top" className="label !text-fg hover:!text-accent min-w-0 truncate transition-colors">
+          <span className="sm:hidden">{site.name.toUpperCase()}</span>
+          <span className="hidden sm:inline">{site.wordmark}</span>
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
@@ -74,17 +75,17 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex shrink-0 items-center gap-3">
           <a
             href="/#contact"
             data-cursor="go"
-            className="label hidden !text-accent md:inline-flex"
+            className="label !text-accent inline-flex min-h-11 items-center px-1"
           >
-            Let&apos;s talk →
+            Talk →
           </a>
           <button
             type="button"
-            className="relative flex h-10 w-10 items-center justify-center lg:hidden"
+            className="relative flex h-11 w-11 items-center justify-center lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -110,7 +111,7 @@ export function Navbar() {
         {open ? (
           <motion.div
             id="mobile-nav"
-            className="fixed inset-0 top-[72px] z-40 bg-bg px-5 pt-10 lg:hidden"
+            className="fixed inset-0 top-16 z-40 overflow-y-auto bg-bg px-5 pt-8 pb-[max(2rem,env(safe-area-inset-bottom))] lg:hidden md:top-[72px]"
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -121,7 +122,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="display text-[14vw] leading-none"
+                  className="display flex min-h-14 items-center text-[12vw] leading-none"
                   initial={reduce ? false : { y: 24, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: index * 0.05 }}
@@ -132,7 +133,7 @@ export function Navbar() {
               <a
                 href="/#contact"
                 onClick={() => setOpen(false)}
-                className="mt-8 inline-flex min-h-12 items-center text-[13px] tracking-[0.16em] uppercase text-accent"
+                className="mt-6 inline-flex min-h-14 items-center text-[13px] tracking-[0.16em] uppercase text-accent"
               >
                 Let&apos;s talk →
               </a>

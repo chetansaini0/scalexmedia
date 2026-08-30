@@ -27,14 +27,14 @@ export function FinalCTA() {
             </span>
           ))}
         </h2>
-        <p className="mx-auto mt-8 max-w-xl text-[20px] text-muted">{site.finalCta.support}</p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <MagneticButton href="#contact" className="bg-accent text-accent-ink hover:bg-fg">
+        <p className="mx-auto mt-6 max-w-xl text-[16px] text-muted md:mt-8 md:text-[20px]">{site.finalCta.support}</p>
+        <div className="mx-auto mt-8 flex w-full max-w-sm flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center">
+          <MagneticButton href="#contact" className="w-full bg-accent text-accent-ink hover:bg-fg sm:w-auto">
             Start a project
           </MagneticButton>
           <MagneticButton
             href="#contact"
-            className="border border-line-strong hover:border-accent hover:text-accent"
+            className="w-full border border-line-strong hover:border-accent hover:text-accent sm:w-auto"
           >
             Book a call
           </MagneticButton>

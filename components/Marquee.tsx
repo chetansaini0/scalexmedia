@@ -11,7 +11,7 @@ function Track({ reverse = false }: { reverse?: boolean }) {
         <span key={`${item.text}-${index}`} className="flex items-center gap-8">
           <span
             className={`display whitespace-nowrap ${
-              item.size === "lg" ? "text-[42px] md:text-[68px]" : "text-[22px] text-muted md:text-[32px]"
+              item.size === "lg" ? "text-[28px] md:text-[68px]" : "text-[16px] text-muted md:text-[32px]"
             }`}
           >
             {item.text}

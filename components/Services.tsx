@@ -87,13 +87,13 @@ export function Services() {
               <article key={service.id} className="border border-line">
                 <button
                   type="button"
-                  className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left"
+                  className="flex min-h-16 w-full items-start justify-between gap-4 px-4 py-5 text-left md:px-5"
                   aria-expanded={expanded}
                   onClick={() => setOpen(expanded ? null : index)}
                 >
                   <span>
                     <span className="label !text-accent">{service.number}</span>
-                    <span className="display mt-2 block text-[28px]">{service.title}</span>
+                    <span className="display mt-2 block text-[24px] leading-tight md:text-[28px]">{service.title}</span>
                   </span>
                   <span className="text-accent" aria-hidden="true">
                     {expanded ? "–" : "+"}

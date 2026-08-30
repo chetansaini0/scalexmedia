@@ -46,7 +46,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="border-t border-line px-5 py-24 md:px-8 md:py-36">
+    <section id="contact" className="border-t border-line px-4 py-20 md:px-8 md:py-36">
       <div className="mx-auto grid max-w-[1680px] gap-16 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <LineReveal lines={["TELL US", "THE BRIEF."]} className="section-display" />
@@ -64,7 +64,7 @@ export function Contact() {
             </p>
           </div>
         ) : (
-          <form onSubmit={onSubmit} className="grid gap-5 sm:grid-cols-2">
+          <form onSubmit={onSubmit} className="grid gap-5 md:grid-cols-2">
             {fields.map((field) => (
               <label key={field.name} className="block">
                 <span className="label">{field.label}</span>
@@ -72,7 +72,9 @@ export function Contact() {
                   name={field.name}
                   type={field.type}
                   required={field.required}
-                  className="mt-2 w-full border-b border-line-strong bg-transparent py-3 outline-none transition-colors focus:border-accent"
+                  autoComplete={field.name === "email" ? "email" : field.name === "name" ? "name" : field.name === "phone" ? "tel" : field.name === "company" ? "organization" : "url"}
+                  inputMode={field.name === "phone" ? "tel" : field.name === "email" ? "email" : undefined}
+                  className="mt-2 min-h-12 w-full border-b border-line-strong bg-transparent py-3 text-base outline-none transition-colors focus:border-accent"
                 />
               </label>
             ))}
@@ -80,7 +82,7 @@ export function Contact() {
               <span className="label">Industry</span>
               <input
                 name="industry"
-                className="mt-2 w-full border-b border-line-strong bg-transparent py-3 outline-none focus:border-accent"
+                className="mt-2 min-h-12 w-full border-b border-line-strong bg-transparent py-3 text-base outline-none focus:border-accent"
               />
             </label>
             <label className="block">
@@ -88,7 +90,7 @@ export function Contact() {
               <select
                 name="budget"
                 defaultValue=""
-                className="mt-2 w-full appearance-none border-b border-line-strong bg-transparent py-3 outline-none focus:border-accent"
+                className="mt-2 min-h-12 w-full appearance-none border-b border-line-strong bg-transparent py-3 text-base outline-none focus:border-accent"
               >
                 <option value="" disabled>
                   Select
@@ -100,12 +102,12 @@ export function Contact() {
                 ))}
               </select>
             </label>
-            <label className="block sm:col-span-2">
+            <label className="block md:col-span-2">
               <span className="label">What do you need help with?</span>
               <select
                 name="need"
                 defaultValue=""
-                className="mt-2 w-full appearance-none border-b border-line-strong bg-transparent py-3 outline-none focus:border-accent"
+                className="mt-2 min-h-12 w-full appearance-none border-b border-line-strong bg-transparent py-3 text-base outline-none focus:border-accent"
               >
                 <option value="" disabled>
                   Select
@@ -117,21 +119,21 @@ export function Contact() {
                 ))}
               </select>
             </label>
-            <label className="block sm:col-span-2">
+            <label className="block md:col-span-2">
               <span className="label">Tell us about your goals</span>
               <textarea
                 name="goals"
                 rows={4}
                 required
-                className="mt-2 w-full resize-none border-b border-line-strong bg-transparent py-3 outline-none focus:border-accent"
+                className="mt-2 w-full resize-none border-b border-line-strong bg-transparent py-3 text-base outline-none focus:border-accent"
               />
             </label>
-            <div className="sm:col-span-2">
+            <div className="md:col-span-2">
               <MagneticButton
                 type="submit"
                 disabled={status === "sending"}
                 className={cn(
-                  "bg-accent text-accent-ink hover:bg-fg",
+                  "w-full bg-accent text-accent-ink hover:bg-fg sm:w-auto",
                   status === "sending" && "opacity-70",
                 )}
               >

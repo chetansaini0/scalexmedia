@@ -27,7 +27,13 @@ export function MagneticButton({
 
   const onMove = (event: React.MouseEvent) => {
     const node = ref.current;
-    if (!node || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (
+      !node ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(pointer: coarse)").matches
+    ) {
+      return;
+    }
     const rect = node.getBoundingClientRect();
     const x = event.clientX - (rect.left + rect.width / 2);
     const y = event.clientY - (rect.top + rect.height / 2);
@@ -38,7 +44,7 @@ export function MagneticButton({
 
   const shared = {
     className: cn(
-      "group relative inline-flex min-h-12 items-center justify-center gap-3 overflow-hidden rounded-full px-6 text-[13px] tracking-[0.16em] uppercase transition-colors",
+      "group relative inline-flex min-h-14 items-center justify-center gap-3 overflow-hidden rounded-full px-6 text-[13px] tracking-[0.16em] uppercase transition-colors md:min-h-12",
       className,
     ),
     onMouseMove: onMove,

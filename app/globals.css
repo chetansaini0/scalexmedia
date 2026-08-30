@@ -35,6 +35,7 @@ html {
   background: var(--bg);
   color: var(--fg);
   scroll-behavior: auto;
+  scroll-padding-top: 5.5rem;
 }
 
 html.lenis,
@@ -46,12 +47,25 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body), sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.55;
   letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+input,
+select,
+textarea {
+  font-size: 16px;
 }
 
 ::selection {
@@ -94,11 +108,11 @@ body {
 }
 
 .hero-display {
-  font-size: clamp(3.4rem, 15vw, 9.75rem);
+  font-size: clamp(2.5rem, 11vw, 9.75rem);
 }
 
 .section-display {
-  font-size: clamp(2.35rem, 7.4vw, 6.4rem);
+  font-size: clamp(2rem, 8.4vw, 6.4rem);
 }
 
 .label {

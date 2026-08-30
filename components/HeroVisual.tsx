@@ -44,10 +44,20 @@ export function HeroVisual() {
   };
 
   return (
+    <>
+    <div className="mt-6 grid grid-cols-3 gap-2 lg:hidden" aria-hidden="true">
+      {phones.map((phone) => (
+        <article key={phone.handle} className={`overflow-hidden rounded-2xl border border-line bg-linear-to-b p-3 ${phone.tone}`}>
+          <p className="label !text-[9px] !text-white/70">{phone.handle}</p>
+          <p className="display mt-3 text-[22px] text-white">{phone.title}</p>
+          <p className="mt-2 text-[12px] text-accent">{phone.metric}</p>
+        </article>
+      ))}
+    </div>
     <div
       ref={ref}
       onMouseMove={onMove}
-      className="relative mx-auto mt-6 h-[480px] w-full max-w-[560px] [--px:0px] [--py:0px] lg:mt-0 lg:h-[560px]"
+      className="relative mx-auto mt-2 hidden h-[480px] w-full max-w-[560px] [--px:0px] [--py:0px] lg:mt-0 lg:block lg:h-[560px]"
       data-cursor="explore"
       aria-hidden="true"
     >
@@ -107,5 +117,6 @@ export function HeroVisual() {
         <p className="mt-2 text-[12px] text-muted">Creative test 03</p>
       </aside>
     </div>
+    </>
   );
 }

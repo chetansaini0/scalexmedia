@@ -17,7 +17,7 @@ export const site = {
   location: "India",
   year: 2026,
   eyebrow: "Social Media  /  Creative  /  Growth",
-  heroHeadline: ["WE MAKE", "BRANDS", "IMPOSSIBLE", "TO SCROLL PAST."],
+  heroHeadline: ["WE MAKE", "BRANDS", "IMPOSSIBLE", "TO SCROLL", "PAST."],
   heroSupport:
     "ScalexMedia builds the strategy, content and campaigns that turn attention into measurable growth.",
   heroTrust: ["STRATEGY", "CONTENT", "PERFORMANCE", "GROWTH"],

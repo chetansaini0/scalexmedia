@@ -23,11 +23,11 @@ export function Comparison() {
           The point is not that other options are bad. The point is what you actually get when growth is the job.
         </p>
 
-        <div className="mt-14 overflow-x-auto no-scrollbar">
-          <table className="min-w-[760px] w-full border-collapse text-left">
+        <div className="-mx-4 mt-14 overflow-x-auto px-4 no-scrollbar snap-x">
+          <table className="min-w-[720px] w-full border-collapse text-left">
             <thead>
               <tr className="border-b border-line">
-                <th className="label py-5 pr-4 font-medium">Capability</th>
+                <th className="label sticky left-0 z-10 bg-bg py-5 pr-4 font-medium">Capability</th>
                 {comparisonColumns.map((column) => (
                   <th
                     key={column.id}
@@ -44,7 +44,7 @@ export function Comparison() {
             <tbody>
               {comparisonRows.map((row) => (
                 <tr key={row.category} className="border-b border-line">
-                  <th className="py-5 pr-4 font-medium">{row.category}</th>
+                  <th className="sticky left-0 z-10 bg-bg py-5 pr-4 font-medium">{row.category}</th>
                   <td className="px-4 py-5"><Mark value={row.diy} /></td>
                   <td className="px-4 py-5"><Mark value={row.freelancer} /></td>
                   <td className="px-4 py-5"><Mark value={row.agency} /></td>

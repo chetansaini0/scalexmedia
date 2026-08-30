@@ -6,22 +6,32 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReduceMotion(media.matches);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const touch = window.matchMedia("(pointer: coarse)");
+    const update = () => {
+      setReduceMotion(motion.matches);
+      setIsTouch(touch.matches);
+    };
     update();
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
+    motion.addEventListener("change", update);
+    touch.addEventListener("change", update);
+    return () => {
+      motion.removeEventListener("change", update);
+      touch.removeEventListener("change", update);
+    };
   }, []);
 
   return (
     <ReactLenis
       root
       options={{
-        duration: reduceMotion ? 0 : 1.15,
-        smoothWheel: !reduceMotion,
-        touchMultiplier: 1.1,
+        duration: reduceMotion || isTouch ? 0 : 1.15,
+        smoothWheel: !reduceMotion && !isTouch,
+        syncTouch: false,
+        touchMultiplier: 1,
       }}
     >
       <div className="grain" aria-hidden="true" />

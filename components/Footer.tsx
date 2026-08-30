@@ -2,7 +2,7 @@ import { site } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line px-5 pt-16 pb-8 md:px-8">
+    <footer className="border-t border-line px-4 pt-14 pb-[max(2rem,env(safe-area-inset-bottom))] md:px-8 md:pt-16">
       <div className="mx-auto max-w-[1680px]">
         <p className="display text-[11vw] leading-[0.82] break-words md:text-[9vw]">
           SCALEXMEDIA
@@ -18,7 +18,7 @@ export function Footer() {
         <div className="mt-16 grid gap-10 border-t border-line pt-10 md:grid-cols-3">
           <nav className="flex flex-col gap-3" aria-label="Footer">
             {site.footerNav.map((item) => (
-              <a key={item.href} href={item.href} className="label link-underline w-fit">
+              <a key={item.href} href={item.href} className="label link-underline inline-flex min-h-11 w-fit items-center">
                 {item.label}
               </a>
             ))}
@@ -30,7 +30,7 @@ export function Footer() {
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="label link-underline w-fit"
+                className="label link-underline inline-flex min-h-11 w-fit items-center"
               >
                 {item.label}
               </a>
