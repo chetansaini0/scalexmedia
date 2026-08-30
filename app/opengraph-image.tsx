@@ -22,12 +22,19 @@ export default function OpenGraphImage() {
         <div style={{ fontSize: 22, letterSpacing: 6, color: "#C8F531" }}>
           SC A L E X M E D I A
         </div>
-        <div style={{ fontSize: 76, lineHeight: 0.9, letterSpacing: -3, fontWeight: 500 }}>
-          WE MAKE BRANDS
-          <br />
-          IMPOSSIBLE TO
-          <br />
-          SCROLL PAST.
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            fontSize: 76,
+            lineHeight: 0.9,
+            letterSpacing: -3,
+            fontWeight: 500,
+          }}
+        >
+          <div>WE MAKE BRANDS</div>
+          <div>IMPOSSIBLE TO</div>
+          <div>SCROLL PAST.</div>
         </div>
         <div style={{ fontSize: 24, color: "#8A8A82" }}>
           Strategy · Content · Performance · Growth
