@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #080808;
-  --bg-elevated: #0e0e0c;
-  --bg-soft: #121210;
-  --fg: #f5f5f0;
-  --muted: #8a8a82;
-  --dim: #5c5c56;
-  --line: #1c1c18;
-  --line-strong: #2a2a26;
+  --bg: #070707;
+  --bg-elevated: #0c0c0a;
+  --bg-soft: #11110e;
+  --fg: #f4f4ef;
+  --muted: #8b8b83;
+  --dim: #565650;
+  --line: #1a1a16;
+  --line-strong: #2c2c26;
   --accent: #c8f531;
   --accent-dim: #8fb31f;
-  --accent-ink: #0a1200;
-  --grain: 0.045;
+  --accent-ink: #081000;
+  --grain: 0.04;
+  --hero-veil: rgba(7, 7, 7, 0.55);
 }
 
 @theme inline {
@@ -48,8 +49,8 @@ body {
   color: var(--fg);
   font-family: var(--font-body), sans-serif;
   font-size: 16px;
-  line-height: 1.55;
-  letter-spacing: -0.011em;
+  line-height: 1.6;
+  letter-spacing: -0.012em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -58,7 +59,7 @@ body {
 
 @media (min-width: 768px) {
   body {
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 
@@ -102,13 +103,24 @@ textarea {
 
 .display {
   font-family: var(--font-display), sans-serif;
-  letter-spacing: -0.045em;
-  line-height: 0.88;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  font-weight: 500;
+}
+
+.brand-display {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(3.4rem, 14vw, 11.5rem);
+  letter-spacing: -0.055em;
+  line-height: 0.84;
   font-weight: 500;
 }
 
 .hero-display {
-  font-size: clamp(2.5rem, 11vw, 9.75rem);
+  font-size: clamp(1.55rem, 4.2vw, 3.25rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-weight: 500;
 }
 
 .section-display {
@@ -116,11 +128,82 @@ textarea {
 }
 
 .label {
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
   font-weight: 500;
+}
+
+.nav-brand {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.92rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--fg);
+  transition: color 0.3s ease;
+}
+
+.nav-brand:hover {
+  color: var(--accent);
+}
+
+.nav-cta {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  border: 1px solid var(--line-strong);
+  padding: 0 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg);
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.nav-cta:hover {
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(105deg, rgba(7, 7, 7, 0.92) 0%, rgba(7, 7, 7, 0.72) 42%, rgba(7, 7, 7, 0.28) 100%),
+    radial-gradient(ellipse 70% 55% at 78% 42%, rgba(200, 245, 49, 0.08), transparent 58%);
+  pointer-events: none;
+}
+
+.hero-media-plane {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-film {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(7, 7, 7, 0.35) 100%),
+    linear-gradient(120deg, #14120c 0%, #1a160e 35%, #0d1408 70%, #10100c 100%);
+}
+
+.hero-film::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, black 10%, transparent 88%);
+  opacity: 0.45;
 }
 
 .grain {
@@ -194,6 +277,34 @@ textarea {
   }
 }
 
+@keyframes hero-drift {
+  0%,
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.04) translate3d(-1.5%, 1%, 0);
+  }
+}
+
+@keyframes accent-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.hero-drift {
+  animation: hero-drift 18s ease-in-out infinite;
+}
+
+.accent-breathe {
+  animation: accent-breathe 4.5s ease-in-out infinite;
+}
+
 .link-underline {
   background-image: linear-gradient(var(--accent), var(--accent));
   background-size: 0 1px;
@@ -218,7 +329,9 @@ textarea {
   .marquee-track,
   .marquee-track-reverse,
   .float-a,
-  .float-b {
+  .float-b,
+  .hero-drift,
+  .accent-breathe {
     animation: none !important;
   }
 

@@ -1,33 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { CountUp } from "@/components/ui/CountUp";
 
-const phones = [
-  {
-    handle: "@atelier.gold",
-    title: "Drop 04",
-    metric: "128.4k",
-    caption: "Quiet luxury, loud stop.",
-    tone: "from-[#1a1208] to-[#c9a227]",
-    delay: "float-a",
-  },
-  {
-    handle: "@stay.palace",
-    title: "Suite 107",
-    metric: "94.2k",
-    caption: "A stay people can feel.",
-    tone: "from-[#14100c] to-[#8b5a2b]",
-    delay: "float-b",
-  },
-  {
-    handle: "@scale.lab",
-    title: "Hook test",
-    metric: "3.8%",
-    caption: "CTR on winning reel.",
-    tone: "from-[#0c1408] to-[#6d8f1a]",
-    delay: "float-a",
-  },
+const frames = [
+  { label: "Drop 04", tone: "from-[#1a1208] via-[#3d2a10] to-[#c9a227]", offset: "8%" },
+  { label: "Suite 107", tone: "from-[#120e0a] via-[#3a2414] to-[#8b5a2b]", offset: "34%" },
+  { label: "Hook test", tone: "from-[#0a1208] via-[#1e2e0c] to-[#6d8f1a]", offset: "62%" },
 ];
 
 export function HeroVisual() {
@@ -37,86 +15,53 @@ export function HeroVisual() {
     const node = ref.current;
     if (!node || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const rect = node.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 16;
-    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 12;
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 8;
     node.style.setProperty("--px", `${x}px`);
     node.style.setProperty("--py", `${y}px`);
   };
 
   return (
-    <>
-    <div className="mt-6 grid grid-cols-3 gap-2 lg:hidden" aria-hidden="true">
-      {phones.map((phone) => (
-        <article key={phone.handle} className={`overflow-hidden rounded-2xl border border-line bg-linear-to-b p-3 ${phone.tone}`}>
-          <p className="label !text-[9px] !text-white/70">{phone.handle}</p>
-          <p className="display mt-3 text-[22px] text-white">{phone.title}</p>
-          <p className="mt-2 text-[12px] text-accent">{phone.metric}</p>
-        </article>
-      ))}
-    </div>
     <div
       ref={ref}
       onMouseMove={onMove}
-      className="relative mx-auto mt-2 hidden h-[480px] w-full max-w-[560px] [--px:0px] [--py:0px] lg:mt-0 lg:block lg:h-[560px]"
+      className="hero-media-plane absolute inset-0 z-0 [--px:0px] [--py:0px]"
       data-cursor="explore"
       aria-hidden="true"
     >
-      <div className="absolute inset-x-8 top-6 h-px bg-line-strong" />
-      <div className="absolute top-4 left-8 label !text-[10px]">Control room</div>
-      <div className="absolute top-4 right-8 label !text-[10px] !text-accent">Live</div>
+      <div className="hero-film hero-drift absolute inset-0" />
 
-      {phones.map((phone, index) => (
-        <article
-          key={phone.handle}
-          className={`absolute w-[168px] overflow-hidden rounded-[28px] border border-white/10 bg-black p-1.5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] md:w-[188px] ${phone.delay}`}
-          style={{
-            left: index === 0 ? "6%" : index === 1 ? "36%" : "58%",
-            top: index === 0 ? "12%" : index === 1 ? "4%" : "28%",
-            zIndex: index === 1 ? 3 : 2,
-            animation: `${phone.delay === "float-a" ? "float-a" : "float-b"} ${7 + index}s ease-in-out infinite`,
-            transform: `translate3d(var(--px), var(--py), 0) rotate(${index === 0 ? -8 : index === 1 ? 2 : 10}deg)`,
-          }}
-        >
-          <div className={`relative aspect-[9/16] overflow-hidden rounded-[22px] bg-linear-to-b ${phone.tone}`}>
-            <div className="absolute inset-x-0 top-0 flex items-center justify-between px-3 pt-3">
-              <span className="text-[10px] tracking-[0.14em] text-white/80 uppercase">{phone.handle}</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+      <div
+        className="absolute inset-y-[12%] right-0 left-[38%] hidden md:block"
+        style={{ transform: "translate3d(var(--px), var(--py), 0)" }}
+      >
+        {frames.map((frame, index) => (
+          <div
+            key={frame.label}
+            className={`absolute top-0 bottom-0 w-[28%] overflow-hidden bg-linear-to-b ${frame.tone}`}
+            style={{
+              left: frame.offset,
+              transform: `translateY(${index === 1 ? "-4%" : index === 2 ? "6%" : "2%"})`,
+              opacity: 0.88 - index * 0.06,
+            }}
+          >
+            <div className="absolute inset-x-0 top-0 h-px bg-white/15" />
+            <div className="absolute inset-x-4 top-5 flex items-center justify-between">
+              <span className="text-[10px] tracking-[0.2em] text-white/55 uppercase">{frame.label}</span>
+              <span className="accent-breathe h-1.5 w-1.5 rounded-full bg-accent" />
             </div>
-            <div className="absolute inset-x-3 top-1/3">
-              <p className="display text-[34px] text-white">{phone.title}</p>
-              <p className="mt-2 text-[11px] text-white/70">{phone.caption}</p>
-            </div>
-            <div className="absolute right-3 bottom-3 left-3 flex items-end justify-between">
-              <span className="text-[11px] text-white/80">▶ 00:07</span>
-              <span className="rounded-full bg-black/40 px-2 py-1 text-[11px] text-accent">{phone.metric}</span>
+            <div className="absolute inset-x-4 bottom-8">
+              <p className="display text-[clamp(1.6rem,2.4vw,2.6rem)] text-white/90">{frame.label}</p>
+              <p className="mt-2 text-[11px] tracking-[0.14em] text-white/45 uppercase">Reel frame</p>
             </div>
           </div>
-        </article>
-      ))}
+        ))}
+      </div>
 
-      <aside
-        className="absolute top-[58%] left-0 w-[168px] rounded-2xl border border-line bg-bg-elevated/90 p-4 backdrop-blur-sm"
-        style={{ transform: "translate3d(calc(var(--px) * -0.6), calc(var(--py) * -0.6), 0)" }}
-      >
-        <p className="label !text-[10px]">Reach</p>
-        <p className="display mt-2 text-[42px] text-accent">
-          <CountUp value={2.8} prefix="+" suffix="M" decimals={1} />
-        </p>
-        <p className="mt-1 text-[12px] text-muted">Placeholder metric</p>
-      </aside>
-
-      <aside
-        className="absolute right-0 bottom-6 w-[180px] rounded-2xl border border-line bg-bg-elevated/90 p-4 backdrop-blur-sm"
-        style={{ transform: "translate3d(calc(var(--px) * 0.5), calc(var(--py) * 0.4), 0)" }}
-      >
-        <p className="label !text-[10px]">Campaign</p>
-        <p className="mt-2 text-[15px]">Hook / Offer / Proof</p>
-        <div className="mt-3 h-1 overflow-hidden rounded-full bg-line-strong">
-          <div className="h-full w-2/3 bg-accent" />
-        </div>
-        <p className="mt-2 text-[12px] text-muted">Creative test 03</p>
-      </aside>
+      <div className="absolute inset-x-0 bottom-0 h-px bg-line-strong/80" />
+      <div className="absolute right-4 bottom-4 label !text-[10px] !text-accent/80 md:right-8 md:bottom-6">
+        Live creative
+      </div>
     </div>
-    </>
   );
 }
