@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const frames = [
   { label: "Drop 04", tone: "from-[#1a1208] via-[#3d2a10] to-[#c9a227]", offset: "8%" },
-  { label: "Suite 107", tone: "from-[#120e0a] via-[#3a2414] to-[#8b5a2b]", offset: "34%" },
+  { label: "Campaign 12", tone: "from-[#120e0a] via-[#3a2414] to-[#8b5a2b]", offset: "34%" },
   { label: "Hook test", tone: "from-[#0a1208] via-[#1e2e0c] to-[#6d8f1a]", offset: "62%" },
 ];
 
